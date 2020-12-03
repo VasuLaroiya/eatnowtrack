@@ -8,13 +8,60 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Count
 from .forms import NewCommentForm
 from django.contrib.auth.decorators import login_required
+from datetime import date
 
 
 def is_users(post_user, logged_user):
     return post_user == logged_user
 
 
-PAGINATION_COUNT = 3
+PAGINATION_COUNT = 20
+
+
+class dashboard(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'blog/dashboard.html'
+    context_object_name = 'posts'
+    paginate_by = PAGINATION_COUNT
+    
+
+    def visible_user(self):
+        return get_object_or_404(User, username=self.kwargs.get('username'))
+
+    def get_context_data(self, **kwargs):
+        visible_user = self.visible_user()
+        logged_user = self.request.user
+        print(logged_user.username == '', file=sys.stderr)
+
+        if logged_user.username == '' or logged_user is None:
+            can_follow = False
+        else:
+            can_follow = (Follow.objects.filter(user=logged_user,
+                                                follow_user=visible_user).count() == 0)
+        data = super().get_context_data(**kwargs)
+
+        data['user_profile'] = visible_user
+        data['can_follow'] = can_follow
+        return data
+
+    def get_queryset(self):
+        user = self.visible_user()
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
+    def post(self, request, *args, **kwargs):
+        if request.user.id is not None:
+            follows_between = Follow.objects.filter(user=request.user,
+                                                    follow_user=self.visible_user())
+
+            if 'follow' in request.POST:
+                    new_relation = Follow(user=request.user, follow_user=self.visible_user())
+                    if follows_between.count() == 0:
+                        new_relation.save()
+            elif 'unfollow' in request.POST:
+                    if follows_between.count() > 0:
+                        follows_between.delete()
+
+        return self.get(self, request, *args, **kwargs)
 
 
 class PostListView(LoginRequiredMixin, ListView):
@@ -131,7 +178,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['content']
+    fields = ['image_post','content', 'servings_meat', 'servings_dairy', 'servings_grains', 'servings_fruit', 'servings_vegetables', 'minutes_aerobic_exercise', 'minutes_weightlifting_exercise']
     template_name = 'blog/post_new.html'
     success_url = '/'
 
@@ -143,11 +190,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         data = super().get_context_data(**kwargs)
         data['tag_line'] = 'Add a new post'
         return data
-
+    
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['content']
+    fields = ['image_post','content', 'servings_meat', 'servings_dairy', 'servings_grains', 'servings_fruit', 'servings_vegetables', 'minutes_aerobic_exercise', 'minutes_weightlifting_exercise']
     template_name = 'blog/post_new.html'
     success_url = '/'
 
@@ -264,6 +311,3 @@ def postpreference(request, postid, userpreference):
                           'postid': postid}
 
                 return redirect('blog-home')
-
-def about(request):
-    return render(request,'blog/about.html',)

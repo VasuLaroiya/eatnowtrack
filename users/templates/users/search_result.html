@@ -1,18 +1,6 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-
-	<div class="container">
-		<div class="form-group">
-				<form action="{% url 'search' %}" method="post">{% csrf_token %}
-                <div style="width: 100%" class="search-container">
-                    <div class="search">
-                    <input required name="search" type="text" id="zip-code-input" placeholder="Search Twitter">
-                    <button type="submit" style="border:0; background: transparent;"><i class="fa fa-search"></i> </button> </a>
-                </div>
-                </form>
-            </div>
-                <br>
 		{% if results %}
 			{% for result in results %}
 			<div class="search-result-profile">

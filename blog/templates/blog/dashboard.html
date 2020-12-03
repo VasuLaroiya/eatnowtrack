@@ -1,0 +1,1596 @@
+{% extends "blog/home.html" %}
+
+{% load static %}
+{% block content %}
+    <div class="d-flex-column">     
+            <div class="justify-content-center profile-section white-important mb-3">
+                <h3 class="white-important p-2 display-4">
+                    {{ user_profile.username }}
+                </h3>
+                <div class = "d-flex-column">
+                    <div class = "d-flex mb-3">
+                        <div class = "d-flex">        
+                            <article class="d-flex justify-content-start media content-section" style="height: 100px; width: 100%">
+                                <div class="mt-2 d-flex full-width align-items-center">
+                                    <img
+                                        class="rounded-circle mr-3 img-fluid"
+                                        style="width: 100px; height: 100px;"
+                                        src="{{ user_profile.profile.image.url }}">
+                                </div>
+                            </article>
+                        </div>
+                    
+                        <div class = "d-flex">
+                            <article class="media content-section">
+                                <div class="d-flex-column justify-content-center">
+                                    <div class="h2 ml-3 mr-5">
+                                            Age: 
+                                    </div>
+                                    <div>
+                                        <h3 class="d-flex justify-content-center white-important follow-click h1 mr-5">
+                                                {{ user_profile.profile.user_age }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <div class = "d-flex">
+                            <article class="d-flex justify-content-end media content-section">
+                                <div class="d-flex-column justify-content-center">
+                                    <div class="h2 mr-5">
+                                            Height: 
+                                    </div>
+                                    <div>
+                                            <h3 class="d-flex justify-content-center white-important follow-click h1 mr-5">
+                                                {{ user_profile.profile.user_height_in_inches }} in
+                                            </h3>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <div class = "d-flex">
+                            <article class="d-flex justify-content-end media content-section">
+                                <div class="d-flex-column justify-content-center">
+                                    <div class="h2 mr-5">
+                                            Weight: 
+                                    </div>
+                                    <div>
+                                            <h3 class="d-flex justify-content-center white-important follow-click h1 mr-5">
+                                                {{ user_profile.profile.user_weight_in_lbs }} lbs
+                                            </h3>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        
+                        <div class = "d-flex">
+                            <article class="d-flex justify-content-end media content-section">
+                                <div class="d-flex-column justify-content-center">
+                                    <div class="h2 mr-5">
+                                            Sex:
+                                    </div>
+                                    <div>
+                                            <h3 class="d-flex justify-content-center white-important follow-click h1 mr-5">
+                                                {{ user_profile.profile.user_sex }}
+                                            </h3>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class = "d-flex">
+                            <article class="media content-section">
+                                <div class="d-flex-column justify-content-center">
+                                    <div class="h2 mr-5">
+                                            Goals: 
+                                    </div>
+                                    <div>
+                                        <h3 class="d-flex justify-content-center white-important follow-click h1 mr-5">
+                                                {{ user_profile.profile.user_goals }}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>                 
+                </div>            
+            </div>
+        <div class="d-flex"> 
+                 <div class="d-flex-column profile-section white-important mb-3 mr-3", style="width:610px">
+                    <h3 class="white-important p-2 display-4 mr-8">
+                        Today's Progress
+                    </h3>
+                    <div class = "d-flex-column">
+                        <div class = "d-flex">                        
+                            <div class = "d-flex">
+                                <article class="media content-section">
+                                    <div class="d-flex-column justify-content-center">
+                                        <div class="h1 mr-5 mb-4">
+                                                Nutrition: <a href="https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/infographic/1-1/" class="ml-3 btn btn-primary btn-lg stretched-link">What is a serving?</a>
+                                        </div>
+                                        <div class= "d-flex-column">
+                                            <div class="d-flex">
+                                                <div class="d-flex white-important h2 mr-3">
+                                                        Protein:
+                                                </div>
+                                                <div class="d-flex-flexwrap white important h2">
+                                                    {% if user_profile.profile.protein_servings_remaining >= 0 %}
+                                                        {% if user_profile.profile.meat_servings_today == 0 %}
+                                                        {% elif user_profile.profile.meat_servings_today == 1 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 2 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 3 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 4 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 5 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 6 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 7 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 8 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.meat_servings_today == 9 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                             <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i> 
+                                                        {% elif user_profile.profile.meat_servings_today == 10 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.protein_servings_remaining == 0 %}
+                                                            Done!!
+                                                        {% elif user_profile.profile.protein_servings_remaining == 1 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 2 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 3 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 4 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 5 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 6 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 7 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 8 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 9 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.protein_servings_remaining == 10 %}
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-secondary mr-2 h1"></i>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user_profile.profile.servings_recommended_protein == 0 %}
+                                                        {% elif user_profile.profile.meat_servings_today == 1 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 2 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 3 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 4 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 5 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 6 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 7 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 8 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_protein == 9 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                             <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i> 
+                                                        {% elif user_profile.profile.servings_recommended_protein == 10 %}
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-drumstick-bite text-warning mr-2 h1"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.negative_protein_servings_remaining == 1 %}
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1 mr-3"></i> Too much!!
+                                                        {% elif user_profile.profile.negative_protein_servings_remaining == 2 %}
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1 mr-3"></i> Too much!!
+                                                        {% elif user_profile.profile.negative_protein_servings_remaining == 3 %}
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i>  
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_protein_servings_remaining == 4 %}
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i>  
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_protein_servings_remaining == 5 %}
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i>  
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_protein_servings_remaining == 6 %}
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i>  
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1"></i> 
+                                                            <i class="fas fa-drumstick-bite text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% endif %}      
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="d-flex white-important h2 mr-3">
+                                                        Grains:
+                                                </div>
+                                                <div class="d-flex-flexwrap white important h2">
+                                                    {% if user_profile.profile.grains_servings_remaining >= 0 %}
+                                                        {% if user_profile.profile.grains_servings_today == 0 %}
+                                                        {% elif user_profile.profile.grains_servings_today == 1 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 2 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 3 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 4 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 5 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 6 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 7 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 8 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 9 %}
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_today == 10 %}
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.grains_servings_remaining == 0 %}
+                                                            Done!!
+                                                        {% elif user_profile.profile.grains_servings_remaining == 1 %}
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 2 %}
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 3 %}
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 4 %}
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 5 %}
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 6 %}
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 7 %}
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 8 %}
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 9 %}
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.grains_servings_remaining == 10 %}
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-secondary mr-2 h1"></i>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user_profile.profile.servings_recommended_grains == 0 %}
+                                                        {% elif user_profile.profile.grains_servings_today == 1 %}
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 2 %}
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 3 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 4 %}
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 5 %}
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 6 %}
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                         <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 7 %}
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 8 %}
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 9 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_grains == 10 %}
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice mr-2 h1"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.negative_grains_servings_remaining == 1 %}
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1 mr-3"></i> Too much!!
+                                                        {% elif user_profile.profile.negative_grains_servings_remaining == 2 %}
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_grains_servings_remaining == 3 %}
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_grains_servings_remaining == 4 %}
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-bread-slice text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_grains_servings_remaining == 5 %}
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-bread-slice text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_grains_servings_remaining == 6 %}
+                                                          <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-bread-slice text-danger mr-2 h1 mr-3"></i>Too much!!
+                                                        {% endif %}      
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="d-flex white-important h2 mr-3">
+                                                        Dairy:
+                                                </div>
+                                                <div class="d-flex-flexwrap white important h2">
+                                                    {% if user_profile.profile.dairy_servings_remaining >= 0 %}
+                                                        {% if user_profile.profile.dairy_servings_today == 0 %}
+                                                        {% elif user_profile.profile.dairy_servings_today == 1 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 2 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 3 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 4 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 5 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 6 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 7 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 8 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 9 %}
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_today == 10 %}
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.dairy_servings_remaining == 0 %}
+                                                            Done!!
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 1 %}
+                                                          <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 2 %}
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i> 
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 3 %}
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 4 %}
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 5 %}
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 6 %}
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 7 %}
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 8 %}
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 9 %}
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% elif user_profile.profile.dairy_servings_remaining == 10 %}
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-secondary mr-2 h1"></i>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user_profile.profile.servings_recommended_dairy == 0 %}
+                                                        {% elif user_profile.profile.dairy_servings_today == 1 %}
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 2 %}
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 3 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 4 %}
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 5 %}
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 6 %}
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                         <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 7 %}
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 8 %}
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 9 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% elif user_profile.profile.servings_recommended_dairy == 10 %}
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-warning mr-2 h1"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.negative_dairy_servings_remaining == 1 %}
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i> Too much!!
+                                                        {% elif user_profile.profile.negative_dairy_servings_remaining == 2 %}
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_dairy_servings_remaining == 3 %}
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_dairy_servings_remaining == 4 %}
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                           <i class="fas fa-cheese text-danger mr-2 h1"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_dairy_servings_remaining == 5 %}
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                            <i class="fas fa-cheese text-danger mr-2 h1"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_dairy_servings_remaining == 6 %}
+                                                          <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-danger mr-2 h1"></i>
+                                                          <i class="fas fa-cheese text-danger mr-2 h1"></i>Too much!!
+                                                        {% endif %}      
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="d-flex white-important h2 mr-3">
+                                                        Vegetables:
+                                                </div>
+                                                <div class="d-flex-wrap white important h2">
+                                                    {% if user_profile.profile.vegetables_servings_remaining >= 0 %}
+                                                        {% if user_profile.profile.vegetables_servings_today == 0 %}
+                                                        {% elif user_profile.profile.vegetables_servings_today == 1 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 2 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 3 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 4 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 5 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 6 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 7 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 8 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 9 %}
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_today == 10 %}
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i> 
+                                                        {% endif %}
+                                                        {% if user_profile.profile.vegetables_servings_remaining == 0 %}
+                                                            Done!!
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 1 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 2 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i>  
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 3 %}
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 4 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 5 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 6 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 7 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 8 %}
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 9 %}
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                           <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% elif user_profile.profile.vegetables_servings_remaining == 10 %}
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                            <i class="fas fa-seedling h1 text-secondary mr-2"></i> 
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user_profile.profile.servings_recommended_vegetables == 0 %}
+                                                        {% elif user_profile.profile.vegetables_servings_today == 1 %}
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 2 %}
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 3 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 4 %}
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 5 %}
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 6 %}
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                         <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 7 %}
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 8 %}
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 9 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_vegetables == 10 %}
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-success mr-2"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.negative_vegetables_servings_remaining == 1 %}
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_vegetables_servings_remaining == 2 %}
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_vegetables_servings_remaining == 3 %}
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_vegetables_servings_remaining == 4 %}
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                           <i class="fas fa-seedling h1 text-danger mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_vegetables_servings_remaining == 5 %}
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                            <i class="fas fa-seedling h1 text-danger mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_vegetables_servings_remaining == 6 %}
+                                                          <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-danger mr-2"></i>
+                                                          <i class="fas fa-seedling h1 text-danger mr-2"></i>Too much!!
+                                                        {% endif %}      
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="d-flex white-important h2 mr-3">
+                                                        Fruit:
+                                                </div>
+                                                <div class="d-flex-flexwrap white important h2">
+                                                    {% if user_profile.profile.fruit_servings_remaining >= 0 %}
+                                                        {% if user_profile.profile.fruit_servings_today == 0 %}
+                                                        {% elif user_profile.profile.fruit_servings_today == 1 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 2 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 3 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 4 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 5 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 6 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 7 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 8 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 9 %}
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_today == 10 %}
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.fruit_servings_remaining == 0 %}
+                                                            Done!!
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 1 %}
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 2 %}
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 3 %}
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 4 %}
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 5 %}
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 6 %}
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 7 %}
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 8 %}
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 9 %}
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% elif user_profile.profile.fruit_servings_remaining == 10 %}
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-secondary h1 mr-2"></i>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user_profile.profile.servings_recommended_fruit == 0 %}
+                                                        {% elif user_profile.profile.fruit_servings_today == 1 %}
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 2 %}
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 3 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 4 %}
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 5 %}
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 6 %}
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                         <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 7 %}
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 8 %}
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 9 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% elif user_profile.profile.servings_recommended_fruit == 10 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>
+                                                        {% endif %}
+                                                        {% if user_profile.profile.negative_fruit_servings_remaining == 1 %}
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_fruit_servings_remaining == 2 %}
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_fruit_servings_remaining == 3 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_fruit_servings_remaining == 4 %}
+                                                           <i class="fas fa-apple-alt text-danger h1 mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_fruit_servings_remaining == 5 %}
+                                                            <i class="fas fa-apple-alt text-danger h1 mr-2"></i>Too much!!
+                                                        {% elif user_profile.profile.negative_fruit_servings_remaining == 6 %}
+                                                          <i class="fas fa-apple-alt text-danger h1 mr-2"></i>Too much!!
+                                                        {% endif %}      
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="h1 mr-5 mb-4">
+                                                Exercise: 
+                                        </div>
+                                        <div class="d-flex-column">
+                                            <div class="d-flex">
+                                                    <div class="d-flex white-important h2 mr-3">
+                                                            Aerobic Activity: 
+                                                    </div>
+                                                    <div class="d-flex-flexwrap white-important h2">
+                                                        {% if user_profile.profile.minutes_aerobic_activity_today == 0 %}  
+                                                        {% elif user_profile.profile.minutes_aerobic_activity_today <= 15 %} 
+                                                            <i class="fas fa-running text-primary mr-2 h1"></i> {{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_aerobic_activity_today <= 30 %} 
+                                                            <i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i> {{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_aerobic_activity_today <= 45 %} 
+                                                            <i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i> {{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_aerobic_activity_today <= 60 %} 
+                                                            <i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i> {{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_aerobic_activity_today <= 75 %} 
+                                                             <i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i>{{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_aerobic_activity_today <= 90 %} 
+                                                           <i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i> {{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        {% else %} 
+                                                            <i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i><i class="fas fa-running text-primary mr-2 h1"></i> {{user_profile.profile.minutes_aerobic_activity_today}} mins
+                                                        
+                                                        {% endif %}
+                                                    </div> 
+                                           </div>
+                                            <div class="d-flex">
+                                                    <div class="d-flex white-important h2 mr-3">
+                                                            Muscle Strengthening: 
+                                                    </div>
+                                                    <div class="d-flex-flexwrap white-important h2">
+                                                        {% if user_profile.profile.minutes_weightlifting_activity_today == 0 %}  
+                                                        {% elif user_profile.profile.minutes_weightlifting_activity_today <= 15 %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_weightlifting_activity_today <= 30 %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_weightlifting_activity_today <= 45 %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_weightlifting_activity_today <= 60 %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_weightlifting_activity_today <= 75 %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        {% elif user_profile.profile.minutes_weightlifting_activity_today <= 90 %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        {% else %} 
+                                                            <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{user_profile.profile.minutes_weightlifting_activity_today}} mins
+                                                        
+                                                        {% endif %}
+                                                    </div> 
+                                            </div>
+                                        </div>
+                                        </div>   
+                                    </div>
+                                </article>
+                            </div>
+                        </div>  
+                    </div> 
+            <div class="d-flex-column profile-section white-important mb-3 mr-3", style="width: 610px">
+                    <h3 class="white-important p-2 display-4 mx-auto mb-3">
+                        This Week
+                    </h3>
+                    <div class = "d-flex-column">
+                        <div class = "d-flex">
+                                        <div class="d-flex_column">
+                                            <div class="d-flex-column mb-6">
+                                                    <div class="d-flex-flexwrap mb-4">
+                                                        <div class="d-flex h1 mr-3 ml-2">
+                                                                Aerobic Activity:
+                                                        </div>
+                                                        <div class="d-flex white-important h1">
+                                                            {{user_profile.profile.minutes_aerobic_activity_week}} mins
+                                                        </div> 
+                                                    </div>
+                                                    <div class= "d-flex">
+                                                        <div class="d-flex-flexwrap white-important h1">
+                                                            {% if user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.aerobic_progress_one %} 
+                                                             <i class="fas fa-running text-secondary mr-2 display-4"></i> <i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.aerobic_progress_two %}
+                                                                <i class="fas fa-running text-primary mr-2 display-4"></i> <i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.aerobic_progress_three %} 
+                                                                <i class="fas fa-running text-primary mr-2 display-4"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.aerobic_progress_four %} 
+                                                               <i class="fas fa-running text-primary mr-2 display-4"></i> <i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.aerobic_progress_five %} 
+                                                                <i class="fas fa-running text-primary mr-2 display-4"></i> <i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-secondary mr-2 display-4"></i><i class="fas fa-running text-secondary mr-2 display-4 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.minutes_recommended_aerobic %} 
+                                                                 <i class="fas fa-running text-primary mr-2 display-4"></i> <i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-secondary mr-2 display-4 mr-3"></i> 
+                                                            {% else %} 
+                                                                <i class="fas fa-running text-primary mr-2 display-4"></i> <i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i><i class="fas fa-running text-primary mr-2 display-4 mr-3"></i> 
+                                                            
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="white-important h1">
+                                                            {% if user_profile.profile.minutes_aerobic_activity_week <= user_profile.profile.minutes_recommended_aerobic %}
+                                                                Goal: {{user_profile.profile.minutes_recommended_aerobic}} mins
+                                                            {% else %}
+                                                                Goal Complete!!
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="d-flex-column mt-5 mb-2">
+                                                <div class="d-flex-flexwrap mb-4">
+                                                    <div class="d-flex h1 mr-3 ml-2">
+                                                            Muscle Strengthening:
+                                                    </div>
+                                                    <div class="d-flex white-important h1">
+                                                        {{user_profile.profile.minutes_weightlifting_activity_week}} mins
+                                                        
+                                                    </div> 
+                                                </div>
+                                                <div class="d-flex">
+                                                        <div class="d-flex-flexwrap white-important h1">
+                                                            {% if user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.muscle_strengthening_progress_one %} 
+                                                             <i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1 mr-3"></i>
+                                                            {% elif user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.muscle_strengthening_progress_two %}
+                                                               <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.muscle_strengthening_progress_three %} 
+                                                                <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.muscle_strengthening_progress_four %} 
+                                                               <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 dh1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.muscle_strengthening_progress_five %} 
+                                                                <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1 mr-3"></i> 
+                                                            {% elif user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.minutes_recommended_muscle_strengthening %} 
+                                                                 <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-secondary mr-2 h1 mr-3"></i> 
+                                                            {% else %} 
+                                                                <i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1"></i><i class="fas fa-dumbbell text-warning mr-2 h1 mr-3"></i> Goal Complete!!
+                                                            
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="white-important h1">
+                                                                {% if user_profile.profile.minutes_weightlifting_activity_week <= user_profile.profile.minutes_recommended_muscle_strengthening %}
+                                                                    Goal: {{user_profile.profile.minutes_recommended_muscle_strengthening}} mins
+                                                                {% else %}
+                                                                    Goal Complete!!
+                                                                {% endif %}
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>              
+                      </div> 
+        </div>  
+    </div>
+    <div class="d-flex-column profile-section white-important mb-3", style="width:610px">
+            <h3 class="white-important p-2 display-4 mb-3">
+                        My Focus Areas {{user_profile.days_as_a_user}}
+            </h3>
+                    <div class = "d-flex-column">
+                        <div class = "d-flex">
+                                        <div class="d-flex_column">
+                                            <div class="d-flex-column mb-5">
+                                                    <div class="d-flex">
+                                                        <div class="d-flex h1 mr-3 ml-2 mb-3 mr-3">
+                                                                {% if user_profile.profile.focus_area_1 == 0 %}
+                                                                    {{profile.days_in_a_row}}
+                                                                {% else %}
+                                                                    <div class="d-flex-flexwrap">
+                                                                            {{user_profile.profile.focus_area_1}}:
+                                                                            {% if user_profile.profile.focus_area_1 == 'Eat enough grains' %}
+                                                                                <i class="fas fa-bread-slice ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Eat enough protein' %}
+                                                                                  <i class="fas fa-drumstick-bite text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Eat enough dairy' %}
+                                                                                <i class="fas fa-cheese text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Eat enough vegetables' %}
+                                                                                <i class="fas fa-seedling h1 text-success ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Eat enough fruit' %}
+                                                                                <i class="fas fa-apple-alt text-danger h1 ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Limit grains intake' %}
+                                                                                <i class="fas fa-bread-slice ml-3 h1"></i>
+                                                                            {% elif user_profile.profilefocus_area_1 == 'Limit protein intake' %}
+                                                                                  <i class="fas fa-drumstick-bite text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Limit dairy intake' %}
+                                                                               <i class="fas fa-cheese text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Limit vegetables intake' %}
+                                                                                <i class="fas fa-seedling h1 text-success ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Limit fruit intake' %}
+                                                                                <i class="fas fa-apple-alt text-danger h1 ml-3"></i>
+                                                                             {% elif user_profile.profile.focus_area_1 == 'Reach aerobic exercise targets' %}
+                                                                                <i class="fas fa-running text-primary ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_1 == 'Reach muscle strengthening targets' %}
+                                                                                 <i class="fas fa-dumbbell text-warning ml-3 h1"></i>
+                                                                            {% endif %}
+                                                                    </div>
+                                                                {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex white-important h2 ml-5">
+                                                        {% if user_profile.profile.focus_area_1 == 0 %}
+                                                            {{profile.days_in_a_row}}
+                                                        {% else %}
+                                                            Hit target {{user_profile.profile.habit_tracker_1}} days in a row
+                                                        {% endif %}
+                                                    </div>
+                                            </div>
+                                            <div class="d-flex-column mb-5">
+                                                    <div class="d-flex">
+                                                        <div class="d-flex h1 mr-3 ml-2 mb-3 mr-3">
+                                                                {% if user_profile.profile.focus_area_2 == 0 %}
+                                                                    {{profile.days_in_a_row}}
+                                                                {% else %}
+                                                                    <div class="d-flex-flexwrap">
+                                                                            {{user_profile.profile.focus_area_2}}:
+                                                                            {% if user_profile.profile.focus_area_2 == 'Eat enough grains' %}
+                                                                                <i class="fas fa-bread-slice ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Eat enough protein' %}
+                                                                                  <i class="fas fa-drumstick-bite text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Eat enough dairy' %}
+                                                                                <i class="fas fa-cheese text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Eat enough vegetables' %}
+                                                                                <i class="fas fa-seedling h1 text-success ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Eat enough fruit' %}
+                                                                                <i class="fas fa-apple-alt text-danger h1 ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Limit grains intake' %}
+                                                                                <i class="fas fa-bread-slice ml-3 h1"></i>
+                                                                            {% elif user_profile.profilefocus_area_2 == 'Limit protein intake' %}
+                                                                                  <i class="fas fa-drumstick-bite text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Limit dairy intake' %}
+                                                                               <i class="fas fa-cheese text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Limit vegetables intake' %}
+                                                                                <i class="fas fa-seedling h1 text-success ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Limit fruit intake' %}
+                                                                                <i class="fas fa-apple-alt text-danger h1 ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Reach aerobic exercise targets' %}
+                                                                                <i class="fas fa-running text-primary ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_2 == 'Reach muscle strengthening targets' %}
+                                                                                 <i class="fas fa-dumbbell text-warning ml-3 h1"></i>
+                                                                            {% endif %}
+                                                                    </div>
+                                                                {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex white-important h2 ml-5">
+                                                        {% if user_profile.profile.focus_area_2 == 0 %}
+                                                            {{profile.days_in_a_row}}
+                                                        {% else %}
+                                                            Hit target {{user_profile.profile.habit_tracker_2}} days in a row
+                                                        {% endif %}
+                                                    </div>
+                                            </div>
+                                            <div class="d-flex-column mb-5">
+                                                    <div class="d-flex">
+                                                        <div class="d-flex h1 mr-3 ml-2 mb-3 mr-3">
+                                                                {% if user_profile.profile.focus_area_3 == 0 %}
+                                                                    {{profile.days_in_a_row}}
+                                                                {% else %}
+                                                                    <div class="d-flex-flexwrap">
+                                                                            {{user_profile.profile.focus_area_3}}:
+                                                                            {% if user_profile.profile.focus_area_3 == 'Eat enough grains' %}
+                                                                                <i class="fas fa-bread-slice ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Eat enough protein' %}
+                                                                                  <i class="fas fa-drumstick-bite text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Eat enough dairy' %}
+                                                                                <i class="fas fa-cheese text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Eat enough vegetables' %}
+                                                                                <i class="fas fa-seedling h1 text-success ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Eat enough fruit' %}
+                                                                                <i class="fas fa-apple-alt text-danger h1 ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Limit grains intake' %}
+                                                                                <i class="fas fa-bread-slice ml-3 h1"></i>
+                                                                            {% elif user_profile.profilefocus_area_3 == 'Limit protein intake' %}
+                                                                                  <i class="fas fa-drumstick-bite text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Limit dairy intake' %}
+                                                                               <i class="fas fa-cheese text-warning ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Limit vegetables intake' %}
+                                                                                <i class="fas fa-seedling h1 text-success ml-3"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Limit fruit intake' %}
+                                                                                <i class="fas fa-apple-alt text-danger h1 ml-3"></i>
+                                                                             {% elif user_profile.profile.focus_area_3 == 'Reach aerobic exercise targets' %}
+                                                                                <i class="fas fa-running text-primary ml-3 h1"></i>
+                                                                            {% elif user_profile.profile.focus_area_3 == 'Reach muscle strengthening targets' %}
+                                                                                 <i class="fas fa-dumbbell text-warning ml-3 h1"></i>
+                                                                            {% endif %}
+                                                                    </div>
+                                                                {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex white-important h2 ml-5">
+                                                        {% if user_profile.profile.focus_area_3 == 0 %}
+                                                            {{profile.days_in_a_row}}
+                                                        {% else %}
+                                                            Hit target {{user_profile.profile.habit_tracker_3}} days in a row
+                                                        {% endif %}
+                                                    </div>
+                                            </div>
+                                        </div>              
+                      </div> 
+        </div>  
+{% endblock content %}

@@ -1,12 +1,11 @@
 {% extends "blog/base.html" %}
 {% load static %}
 {% block content %}
-    <div class="row">
-        <div class="col-12 col-md-3 pr-4 dont-move">
-            <a href="/"> <h2><img class="img-fluid" width="60" src="{% static 'blog/logo.png' %}">BlogRoom</h2></a><br>
-            <div class="profile-section">
+    <div class="d-flex">
+        <div style="width:250px">
+            <div class="profile-section ml-3 mr-3">
             <h3 class="white-important p-2">
-                Profile
+                My Profile
             </h3>
             <article class="media content-section" style="height: 140px; width: 100%">
                 {%  if user_profile != None %}
@@ -38,10 +37,7 @@
                                     class="white-important">
                                 {{ user.username }}
                             </h4>
-                            <h6 style="text-align: left"
-                                    class="email-profile">
-                                {{ user.email }}
-                            </h6>
+                           
                         </div>
                     </div>
                 {%  endif %}
@@ -90,13 +86,6 @@
             </article>
 
             <div class="d-flex">
-                {% if user_profile is None %}
-                <div style="margin-left: 40px">
-                    <a class="btn btn-sm btn-outline-primary mb-4 mr-3 " href="{% url 'post-create' %}">
-                        Tweet
-                    </a>
-                </div>
-                {% endif %}
                 {%  if user_profile is not None and user_profile.id != user.id  and user.username != '' %}
                     <form method="POST">
                         {% csrf_token %}
@@ -116,14 +105,14 @@
             </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 scrollable" >
+        <div class="scrollable ml-6 mr-6", style="width:1200px">
             <div class="full-width row">
                 <div class="col-6">
-                    <h3 class="white-important mb-3">
-                        Tweets
+                    <h3 class="white-important ml-3 mb-3">
+                        My Feed
                     </h3>
                 </div>
-                 <div class="col-6 no-padding">
+                 <div class="col-6">
                     <h6
                             style="position: absolute; bottom: 0; right: 0"
                             class="white-important mb-3">
@@ -134,12 +123,10 @@
             </div>
 
             {% for post in posts %}
-                <article class="media content-section hovered-tweet">
+                <article class="media content-section hovered-tweet ml-3 mr-3">
                 <div style="width: 100%; word-break: break-all;">
-
-                    <div class="pb-2 row m-0" style="width: 100%; margin-right: 0 !important;">
-                       <div
-                               style="padding-left: 0px !important;"
+                    <div class="pb-0 row m-0" style="width: 100%; margin-right: 0 !important;">
+                       <div style="padding-left: 0px !important;"
                                class="col-8 no-padding d-flex align-items-center">
                            <img
                                class="rounded-circle mr-2"
@@ -160,21 +147,147 @@
                                         href="{% url 'post-update' post.id %}">update</a>
                             {%  endif %}
                        </div>
-                   </div>
-                    <div
-                            class="mb-2"
-                            style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.1)"></div>
-                    <a
-                            style="color: rgba(255, 255, 255, 0.5) !important;"
-                            href="{% url 'post-detail' post.id %}">
-                        <p class="mb-4">
-                            {{ post.content }}
-                        </p>
-                    </a>
+                    </div>
+                    <div class="d-flex">
+                        <div class="p-2 bd-highlight">
+                            <img
+                               class="square mr-3 img-fluid"
+                               style="width: 400px; height: 300px;"
+                               src="{{ post.image_post.url }}"> 
+                        </div>        
+                        <div class="d-flex flex-column bd-highlight">
+                           <div class="p-2 bd-highlight"> 
+                                {% if post.servings_meat == 0 %}
+                                 
+                                {% elif post.servings_meat == 1 %}
+                                    <i class="fas fa-drumstick-bite text-warning mr-2 h2"></i>
+                                {% elif post.servings_meat == 2 %}
+                                     <i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i>
+                                {% elif post.servings_meat == 3 %}
+                                   <i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i>
+                                {% elif post.servings_meat == 4 %}
+                                    <i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i>
+                                {% elif post.servings_meat == 5 %}
+                                   <i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i>
+                                {% elif post.servings_meat == 6 %}
+                                     <i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i><i class="fas fa-drumstick-bite text-warning mr-2 h2"></i>             
+                                {% else %}
+                                    Print('Invalid # of servings')
+                                {% endif %}
+                            </div>
+                            
+                            <div class="p-2 bd-highlight"> 
+                                {% if post.servings_grains == 0 %}
+                                 
+                                {% elif post.servings_grains == 1 %}
+                                   <i class="fas fa-bread-slice text-white mr-2 h2"></i>
+                                {% elif post.servings_grains == 2 %}
+                                   <i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i>
+                                {% elif post.servings_grains == 3 %}
+                                   <i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i>
+                                {% elif post.servings_grains == 4 %}
+                               <i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i>
+                                {% elif post.servings_grains == 5 %}
+                                    <i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i>
+                                {% elif post.servings_grains == 6 %}
+                                    <i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i><i class="fas fa-bread-slice text-white mr-2 h2"></i>           
+                                {% else %}
+                                    Print('Invalid # of servings')
+                                {% endif %}
+                            </div>
+                            
+                             <div class="p-2 bd-highlight"> 
+                                {% if post.servings_dairy == 0 %}
+                                 
+                                {% elif post.servings_dairy == 1 %}
+                                   <i class="fas fa-cheese text-warning mr-2 h2"></i>
+                                {% elif post.servings_dairy == 2 %}
+                                   <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i>
+                                {% elif post.servings_dairy == 3 %}
+                                    <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i>
+                                {% elif post.servings_dairy == 4 %}
+                                    <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i>
+                                {% elif post.servings_dairy == 5 %}
+                                    <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i>
+                                {% elif post.servings_dairy == 6 %}
+                                    <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i> <i class="fas fa-cheese text-warning mr-2 h2"></i>
+                          
+                                   
+                                {% else %}
+                                    Print('Invalid # of servings')
+                                {% endif %}
+                            </div>
+                            
+                            <div class="p-2 bd-highlight"> 
+                                {% if post.servings_vegetables == 0 %}
+                                 
+                                {% elif post.servings_vegetables == 1 %}
+                                    <i class="fas fa-seedling h2 text-success mr-2"></i>  
+                                {% elif post.servings_vegetables == 2 %}
+                                    <i class="fas fa-seedling h2 text-success mr-2"></i>  <i class="fas fa-seedling h2 text-success mr-2"></i>
+                                {% elif post.servings_vegetables == 3 %}
+                                   <i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i>
+                                {% elif post.servings_vegetables == 4 %}
+                                    <i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i>
+                                {% elif post.servings_vegetables == 5 %}
+                                   <i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i>
+                                {% elif post.servings_vegetables == 6 %}
+                                    <i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i><i class="fas fa-seedling h2 text-success mr-2"></i>     
+                                {% else %}
+                                    Print('Invalid # of servings')
+                                {% endif %}
+                            </div>
+                            
+                            <div class="p-2 bd-highlight"> 
+                                {% if post.servings_fruit == 0 %}
+                                 
+                                {% elif post.servings_fruit == 1 %}
+                                    <i class="fas fa-apple-alt text-danger h2 mr-2"></i>
+                                {% elif post.servings_fruit == 2 %}
+                                    <i class="fas fa-apple-alt text-danger h2 mr-2"></i><i class="fas fa-apple-alt text-danger h2 mr-2"></i>
+                                {% elif post.servings_fruit == 3 %}
+                                    <i class="fas fa-apple-alt text-danger h2 mr-2"></i><i class="fas fa-apple-alt text-danger h2 mr-2"></i><i class="fas fa-apple-alt text-danger h2 mr-2"></i>
+                                {% elif post.servings_fruit == 4 %}
+                                    <i class="fas fa-apple-alt text-danger h2 mr-2"></i><i class="fas fa-apple-alt text-danger h2 mr-2"></i><i class="fas fa-apple-alt text-danger h2 mr-2"></i><i class="fas fa-apple-alt text-danger h2 mr-2"></i>
+                                {% elif post.servings_fruit == 5 %}
+                                   <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i>
+                                {% elif post.servings_fruit == 6 %}
+                               <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i> <i class="fas fa-apple-alt text-danger h2 mr-2"></i>
+                                {% else %}
+                                    Print('Invalid # of servings')
+                                {% endif %}
+                            </div>
+                            <div class="p-2 bd-highlight h2 white-important"> 
+                                {% if post.minutes_aerobic_exercise == 0 %}
+                                 
+                                {% else %}
+                                    <i class="fas fa-running text-primary mr-2 h1"></i> {{post.minutes_aerobic_exercise}} mins
+                                {% endif %}
+                            </div>
+                            <div class="p-2 bd-highlight h2 white-important"> 
+                                {% if post.minutes_weightlifting_exercise == 0 %}
 
-                        <div class="row">
-                            <div class="col-6" style="display: flex;">
-                                <small style="opacity: 0.4;">
+                                {% else %}
+                                 <i class="fas fa-dumbbell text-warning mr-2 h1"></i> {{post.minutes_weightlifting_exercise}} mins
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+            
+            
+                    <div
+                        class="mb-2 "
+                        style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 255)"></div>
+                        <a style="color: rgba(255, 255, 255, 0.5) !important;">
+                        <div class= "white-important">
+                            <p>
+                             {{ post.content }}
+                            </p>
+                        </div>
+                        
+                    <div class="row white-important ml-3">
+                        <div style="width:300px display: flex;">
+                            <small style="opacity: 0.4;">
 
                                     <!-- Like Buttons Here -->
                                     <a href="#" onClick="document.getElementById('likebutton').submit()">
@@ -195,14 +308,15 @@
 
 
                                 </small>
-                                <small style="opacity: 0.4; margin-left:15px;">
+                                <small style="opacity: 0.4;">
                                     <a href="/post/{{post.id}}/">
                                         <i style=" font-size: 16px;" class="far fa-comment"></i> {{ post.number_of_comments }} comment(s)
                                     </a>
 
                                 </small>
                             </div>
-                            <div class="col-6">
+                        
+                        <div class="ml-auto mr-3">
                                 <small
                                         style="opacity: 0.4;"
                                     class="white-important d-flex full-width flex-row-reverse">
@@ -247,12 +361,12 @@
             <form action="{% url 'search' %}" method="post">{% csrf_token %}
                 <div class="search-container">
                     <div class="search">
-                    <input required name="search" type="text" id="zip-code-input" placeholder="Search Twitter">
+                    <input required name="search" type="text" id="zip-code-input" placeholder="Search">
                     <button type="submit" style="border:0; background: transparent;"><i class="fa fa-search"></i> </button> </a>
                 </form>
               </div>
             </div>
-            <h3 class="white-important mb-3 mt-4"> Trends </h3>
+            <h3 class="white-important mb-3 mt-4"> Explore </h3>
 
                 {%  if user_profile is None %}
 
@@ -288,13 +402,7 @@
 
                 </article>
                 {% endif %}
-                <p><a href="">Terms</a>,
-<a href="">Privacy policy</a>,
-<a href="">Cookies</a>,
-<a href="">Ads info</a>,
-<a href="">More</a>
-© 2020 Twitter, Inc.</p>
-
+               
         </div>
     </div>
 {% endblock content %}
